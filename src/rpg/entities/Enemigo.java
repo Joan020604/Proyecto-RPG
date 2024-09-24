@@ -12,10 +12,12 @@ public class Enemigo {
     public Enemigo(String name){
         this.name = name;
         this.stats = new HashMap<>();
-        this.stats.put(Stats.MAX_HP, 50);
-        this.stats.put(Stats.HP, 50);
-        this.stats.put(Stats.ATAQUE, 5);
-        this.stats.put(Stats.DEFENSA, 2);
+        this.stats.put(Stats.MAX_HP, 80);
+        this.stats.put(Stats.HP, 80);
+        this.stats.put(Stats.MAX_MP,80);
+        this.stats.put(Stats.MP,80);
+        this.stats.put(Stats.ATAQUE, 25);
+        this.stats.put(Stats.DEFENSA, 12);
     }
 
     public boolean isAlive() {
@@ -23,13 +25,14 @@ public class Enemigo {
     }
 
     public void attack(Jugador jugador) {
-        int damage = this.stats.get(Stats.ATAQUE) - jugador.getStats().get(Stats.DEFENSA);
-        if (damage > 0) {
-            jugador.getStats().put(Stats.HP, jugador.getStats().get(Stats.HP) - damage);
-            System.out.println(this.name + " ataca a " + jugador.getName() + " con " + damage + " de daño!");
-            System.out.println(jugador.getName() + " a perdido " + jugador.getStats().get(Stats.HP) + "de HP.");
-        } else {
-            System.out.println(this.name + " ataco " + jugador.getName() + " pero no le hizo daño!");
+        int dano = this.stats.get(Stats.ATAQUE) - jugador.getStats().get(Stats.DEFENSA);
+        if (dano > 0) {
+            jugador.getStats().put(Stats.HP, jugador.getStats().get(Stats.HP) - dano);
+            System.out.println(this.name + " ataco a " + jugador.getName() + " con " + dano + " de daño!");
+            System.out.println(jugador.getName() + " tiene " + jugador.getStats().get(Stats.HP) + " de HP.");
+        }
+        else {
+            System.out.println(this.name + " ataco a " + jugador.getName() + " pero no le hizo daño!");
         }
     }
 
@@ -37,7 +40,7 @@ public class Enemigo {
         return name;
     }
 
-    public HashMap<Stats, Integer> getStats() {
+    public HashMap<Stats, Integer> getStats(){
         return stats;
     }
 }

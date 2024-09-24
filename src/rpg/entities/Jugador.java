@@ -28,12 +28,14 @@ public class Jugador {
             int dano = this.stats.get(Stats.ATAQUE)-enemigo.getStats().get(Stats.DEFENSA);
             if (dano>0){
                 enemigo.getStats().put(Stats.HP, enemigo.getStats().get(Stats.HP)-dano);
-                System.out.println(this.name + "ataque" + enemigo.getName() + "con" + dano + "de daño");
-                System.out.println(enemigo.getName() + "a perdido" + enemigo.getStats().get(Stats.HP)+ " de HP.");
+                System.out.println(this.name + " ataco a " + enemigo.getName() + " con " + dano + " de daño");
+                System.out.println(enemigo.getName() + " tiene " + enemigo.getStats().get(Stats.HP)+ " de HP.");
             }
             else {
-                System.out.println(this.name + " ataco " + enemigo.getName() + "pero no le hizo daño");}
+                System.out.println(this.name + " ataco a " + enemigo.getName() + " pero no le hizo daño");
+            }
         }
+
         public String getName(){
             return name;
         }
@@ -41,4 +43,3 @@ public class Jugador {
             return stats;
         }
     }
-
