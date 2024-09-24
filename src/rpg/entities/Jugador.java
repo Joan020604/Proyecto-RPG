@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Jugador {
 
         private String name;
-        private HashMap<Stats, Integer> stats:
+        private HashMap<Stats, Integer> stats;
 
         public Jugador(String name){
             this.name= name;
