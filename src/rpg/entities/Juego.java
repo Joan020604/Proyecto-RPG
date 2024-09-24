@@ -26,8 +26,8 @@ public class Juego {
         }
     }
     public static void main(String[] args) {
-        Jugador jugador = new Jugador("Jugador", new HashMap<>());
-        Enemigo enemigo = new Enemigo("Enemigo", new HashMap<>());
+        Jugador jugador = new Jugador("Rocket", new HashMap<>());
+        Enemigo enemigo = new Enemigo("Loky", new HashMap<>());
         Juego juego = new Juego(jugador, enemigo);
         Juego.startGame();
     }
