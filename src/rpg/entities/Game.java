@@ -2,33 +2,33 @@ package rpg.entities;
 
 import java.util.HashMap;
 
-public class Juego {
+public class Game {
 
-    private Jugador jugador;
-    private Enemigo enemigo;
+    private Player player;
+    private Enemy enemy;
 
-    public Juego() {
-        this.jugador = new Jugador("Rocket");
-        this.enemigo = new Enemigo("Loky");
+    public Game() {
+        this.player = new Player("Rocket");
+        this.enemy = new Enemy("Loky");
     }
     public void startGame() {
-        while (jugador.isAlive() && enemigo.isAlive()) {
+        while (player.isAlive() && enemy.isAlive()) {
             System.out.println("\n--- Turno del jugador ---");
-            jugador.ataque(enemigo);
+            player.attack(enemy);
 
-            if (enemigo.isAlive()) {
+            if (enemy.isAlive()) {
                 System.out.println("\n--- Turno del enemigo ---");
-                enemigo.attack(jugador);
+                enemy.attack(player);
             }
         }
-        if (jugador.isAlive()) {
+        if (player.isAlive()) {
             System.out.println("\n¡Victoria! El jugador ha ganado.");
         } else {
             System.out.println("\n¡Derrota! El enemigo ha ganado.");
         }
     }
     public static void main(String[] args) {
-        Juego juego = new Juego();
-        juego.startGame();
+        Game game = new Game();
+        game.startGame();
     }
 }
