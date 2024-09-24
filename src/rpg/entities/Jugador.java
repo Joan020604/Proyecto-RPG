@@ -24,15 +24,15 @@ public class Jugador {
     public boolean isAlive(){
             return stats.get(Stats.HP)>0;
         }
-        public void ataque(Enemy enemy){
-            int dano = this.stats.get(Stats.ATAQUE)-enemy.getStats().get(Stats.DEFENSA);
+        public void ataque(Enemigo enemigo){
+            int dano = this.stats.get(Stats.ATAQUE)-enemigo.getStats().get(Stats.DEFENSA);
             if (dano>0){
-                enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP)-dano);
-                System.out.println(this.name + "ataque" + enemy.getName() + "con" + dano + "de daño");
-                System.out.println(enemy.getName() + "a perdido" + enemy.getStats().GET(Stats.HP)+ " de HP.");
+                enemigo.getStats().put(Stats.HP, enemigo.getStats().get(Stats.HP)-dano);
+                System.out.println(this.name + "ataque" + enemigo.getName() + "con" + dano + "de daño");
+                System.out.println(enemigo.getName() + "a perdido" + enemigo.getStats().GET(Stats.HP)+ " de HP.");
             }
             else {
-                System.out.println(this.name + " ataco " + enemy.getName() + "pero no le hizo daño");}
+                System.out.println(this.name + " ataco " + enemigo.getName() + "pero no le hizo daño");}
         }
         public String getName(){
             return name;
