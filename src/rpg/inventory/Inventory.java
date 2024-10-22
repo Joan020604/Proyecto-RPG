@@ -7,9 +7,10 @@ package rpg.inventory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import rpg.items.Armors.Armor;
 import rpg.items.Item;
 import rpg.items.Misc;
-import rpg.items.Armors.Armor;
 import rpg.items.weapons.Weapon;
 
 public class Inventory {
