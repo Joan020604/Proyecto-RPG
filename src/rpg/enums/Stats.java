@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package rpg.enums;
 
 public enum Stats {
@@ -13,6 +18,8 @@ public enum Stats {
     ACCURACY,
     EVASION,
     CRITICAL_HIT_CHANCE,
-    CRITICAL_HIT_DAMAGE
-}
+    CRITICAL_HIT_DAMAGE;
 
+    private Stats() {
+    }
+}

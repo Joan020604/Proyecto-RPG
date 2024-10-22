@@ -3,23 +3,23 @@
 // (powered by FernFlower decompiler)
 //
 
-package rpg.entities;
+package rpg.entities.enemies;
 
 import java.util.HashMap;
 import java.util.Map;
 import rpg.enums.Stats;
 
-public class Player {
+public class Enemy {
     private String name;
     private Map<Stats, Integer> stats;
 
-    public Player(String name) {
+    public Enemy(String name, int maxHP, int attack, int defense) {
         this.name = name;
         this.stats = new HashMap();
-        this.stats.put(Stats.MAX_HP, 100);
-        this.stats.put(Stats.HP, 100);
-        this.stats.put(Stats.ATTACK, 10);
-        this.stats.put(Stats.DEFENSE, 5);
+        this.stats.put(Stats.MAX_HP, maxHP);
+        this.stats.put(Stats.HP, maxHP);
+        this.stats.put(Stats.ATTACK, attack);
+        this.stats.put(Stats.DEFENSE, defense);
     }
 
     public String getName() {
@@ -34,10 +34,10 @@ public class Player {
         return (Integer)this.stats.get(Stats.HP) > 0;
     }
 
-    public void attack(rpg.entities.Enemy enemy) {
-        int damage = (Integer)this.stats.get(Stats.ATTACK) - (Integer)enemy.getStats().get(Stats.DEFENSE);
+    public void attack(Player player) {
+        int damage = (Integer)this.stats.get(Stats.ATTACK) - (Integer)player.getStats().get(Stats.DEFENSE);
         if (damage > 0) {
-            enemy.getStats().put(Stats.HP, (Integer)enemy.getStats().get(Stats.HP) - damage);
+            player.getStats().put(Stats.HP, (Integer)player.getStats().get(Stats.HP) - damage);
         }
 
     }
