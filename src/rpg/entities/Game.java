@@ -1,4 +1,4 @@
-package rpg;
+package rpg.entities;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import rpg.entities.Enemy;
-import rpg.entities.Player;
 import rpg.enums.ItemType;
 import rpg.enums.Stats;
 import rpg.inventory.InventoryWindow;
