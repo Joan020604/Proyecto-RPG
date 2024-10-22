@@ -1,10 +1,9 @@
 
-package rpg.entities.enemies;
+package rpg.entities;
 
 import java.util.HashMap;
 import java.util.Map;
 import rpg.enums.Stats;
-
 
 public class Enemy {
     private String name;
