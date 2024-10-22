@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import rpg.enums.Stats;
 
+
 public class Enemy {
     private String name;
     private Map<Stats, Integer> stats;
