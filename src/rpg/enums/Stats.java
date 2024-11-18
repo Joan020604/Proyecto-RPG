@@ -1,10 +1,6 @@
 /**
  * Enumeración que representa las diferentes estadísticas (stats) de un personaje
- * en un juego de rol (RPG).
- *
- * <p>Esta enumeración incluye tanto atributos básicos como avanzados que afectan
- * las capacidades y rendimiento del personaje durante el juego, como su salud, 
- * poder de ataque y probabilidad de crítico.</p>
+ * en el juego (RPG).
  */
 package rpg.enums;
 
@@ -76,9 +72,6 @@ public enum Stats {
 
     /**
      * Constructor privado de la enumeración.
-     * 
-     * <p>Se utiliza para impedir la creación de instancias externas,
-     * ya que las enumeraciones son estáticas y no instanciables.</p>
      */
     private Stats() {
     }
