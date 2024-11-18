@@ -1,9 +1,9 @@
+package rpg.enums;
+
 /**
  * Enumeración que representa las diferentes estadísticas (stats) de un personaje
  * en el juego (RPG).
  */
-package rpg.enums;
-
 public enum Stats {
     /**
      * Salud actual del personaje.
