@@ -1,9 +1,9 @@
+package rpg.enums;
+
 /**
  * Enumeración que representa los diferentes tipos de (slots) 
  * disponibles para equipamiento en el juego (RPG).
  */
-package rpg.enums;
-
 public enum Slot {
     /**
      * Slot para equipamiento en la cabeza.
