@@ -4,6 +4,13 @@ import rpg.enums.Stats;
 
 import java.util.HashMap;
 
+/**
+ * Representa un personaje abstracto en el juego RPG. 
+ * Define las propiedades y comportamientos básicos de un personaje, como su nombre, estadísticas
+ * y la capacidad de realizar ataques a otros personajes.
+ * 
+ * Esta clase debe ser extendida por clases concretas que implementen el método `initCharacter`.
+ */
 public abstract class GameCharacter {
 
     protected String name;
