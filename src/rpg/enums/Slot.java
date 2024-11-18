@@ -1,50 +1,42 @@
 /**
- * Enumeración que representa los diferentes tipos de ranuras (slots) 
- * disponibles para equipamiento en un juego de rol (RPG).
- * 
- * <p>Cada constante de esta enumeración representa una ranura específica 
- * en la que se pueden equipar objetos, como cascos, armaduras o armas. 
- * Estas ranuras permiten organizar el equipamiento del personaje.
- * </p>
+ * Enumeración que representa los diferentes tipos de (slots) 
+ * disponibles para equipamiento en el juego (RPG).
  */
 package rpg.enums;
 
 public enum Slot {
     /**
-     * Ranura para equipamiento en la cabeza (por ejemplo, cascos o coronas).
+     * Slot para equipamiento en la cabeza.
      */
     HEAD,
 
     /**
-     * Ranura para equipamiento en el torso (por ejemplo, armaduras).
+     * Slot para equipamiento en el torso.
      */
     BODY,
 
     /**
-     * Ranura para equipamiento en las piernas (por ejemplo, pantalones o grebas).
+     * Slot para equipamiento en las piernas.
      */
     LEGS,
 
     /**
-     * Ranura para equipamiento en los pies (por ejemplo, botas).
+     * Slot para equipamiento en los pies.
      */
     FEET,
 
     /**
-     * Ranura para equipamiento en las manos (por ejemplo, guantes).
+     * Slot para equipamiento en las manos.
      */
     HANDS,
 
     /**
-     * Ranura principal para equipamiento de armas (por ejemplo, espadas o bastones).
+     * Slot principal para equipamiento de armas.
      */
     MAIN_HAND;
 
     /**
      * Constructor privado de la enumeración.
-     * 
-     * <p>Se utiliza para evitar la creación de instancias de la enumeración
-     * fuera de esta definición.</p>
      */
     private Slot() {
     }
