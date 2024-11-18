@@ -1,9 +1,9 @@
-package rpg.enums;
-
 /**
  * Enumeración que representa los diferentes niveles de rareza de un ítem en el juego RPG.
  * La rareza indica cuán difícil es encontrar un ítem y, generalmente, su valor o poder relativo.
  */
+package rpg.enums;
+
 public enum Rarity {
 
     /** Común: ítems más frecuentes y fáciles de encontrar */
@@ -23,7 +23,6 @@ public enum Rarity {
 
     /**
      * Constructor privado del enumerado.
-     * No requiere inicialización adicional.
      */
     private Rarity() {
     }
