@@ -17,7 +17,6 @@ public enum ItemType {
 
     /**
      * Constructor privado del enumerado.
-     * No se necesita lógica adicional para este enumerado.
      */
     private ItemType() {
     }
