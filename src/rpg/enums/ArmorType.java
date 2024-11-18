@@ -22,8 +22,7 @@ public enum ArmorType {
     HANDS;
 
     /**
-     * Constructor privado para evitar la creación de instancias fuera de la enumeración.
-     * No se requiere inicialización adicional.
+     * Constructor privado de enumeración.
      */
     private ArmorType() {
     }
