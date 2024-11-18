@@ -1,9 +1,9 @@
+package rpg.enums;
+
 /**
  * Enumeración que representa los diferentes tipos de armas disponibles
  * en el juego (RPG).
  */
-package rpg.enums;
-
 public enum WeaponType {
     /**
      * Espada: arma equilibrada con buena capacidad de ataque.
