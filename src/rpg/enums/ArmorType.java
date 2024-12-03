@@ -1,29 +1,12 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa los diferentes tipos de armadura en el juego RPG.
- * Cada tipo de armadura se asocia con una parte específica del cuerpo del personaje.
+ * Enumerado que representa los diferentes tipos de armadura en el juego
  */
 public enum ArmorType {
-
-    /** Casco, protege la cabeza del personaje */
-    HELMET,
-
-    /** Pechera, protege el torso del personaje */
-    CHESTPLATE,
-
-    /** Pantalones, protegen las piernas del personaje */
-    LEGGINGS,
-
-    /** Botas, protegen los pies del personaje */
-    BOOTS,
-
-    /** Guantes, protegen las manos del personaje */
-    HANDS;
-
-    /**
-     * Constructor privado de enumeración.
-     */
-    private ArmorType() {
-    }
+    HELMET,      // Representa un casco, que protege la cabeza del jugador o enemigo.
+    CHESTPLATE,  // Representa una pechera, que protege el torso.
+    LEGGINGS,    // Representa unos pantalones, que protegen las piernas.
+    BOOTS,       // Representa unas botas, que protegen los pies.
+    HANDS        // Representa protecciones para las manos, como guantes.
 }

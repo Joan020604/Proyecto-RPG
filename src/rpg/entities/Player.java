@@ -1,71 +1,245 @@
 package rpg.entities;
 
-import rpg.enums.Stats;  // Importa el enumerado que define las estadísticas del juego.
-import java.util.HashMap;
-import java.util.Map;
+import rpg.enums.Stats;  // Importa las estadísticas del personaje (HP, MP, etc.)
+import rpg.enums.WearType;  // Importa los tipos de equipo que el personaje puede usar
+import rpg.exceptions.ItemNotFoundException;  // Importa la excepción que se lanza cuando un objeto no se encuentra en el inventario
+import rpg.inventory.Inventory;  // Importa la clase que maneja el inventario del personaje
+import rpg.items.Equipment;  // Importa la clase base para los objetos equipables
+import rpg.items.Item;  // Importa la clase base para todos los objetos
+import rpg.items.Miscs.Misc;  // Importa la clase que representa objetos misceláneos
+import rpg.items.weapons.Weapon;  // Importa la clase que representa armas
+import rpg.utils.cache.Randomized;  // Importa una clase que genera valores aleatorios
 
-public class Player {
-    private String name;  // Almacena el nombre del jugador.
-    private Map<Stats, Integer> stats;  // Mapa que almacena las estadísticas del jugador donde la clave es del tipo Stats y el valor es un entero.
+import javax.swing.*;  // Importa componentes gráficos para mostrar diálogos
+import java.io.*;  // Importa clases para manejo de archivos y flujo de datos
+import java.util.HashMap;  // Importa la clase HashMap para almacenar pares clave-valor
+
+/**
+ * El tipo de Jugador.
+ */
+public class Player extends GameCharacter implements Serializable {
+
+    private final Inventory inventory;
+    private HashMap<WearType, Equipment> equipment;
 
     /**
-     * Constructor que inicializa el nombre y las estadísticas del jugador
-     * @param name Nombre del jugador
+     * Constructor que crea un nuevo jugador con el nombre especificado.
+     *
+     * @param name el nombre del jugador
      */
     public Player(String name) {
-        this.name = name;  // Asigna el nombre del jugador.
-        this.stats = new HashMap<>();  // Inicializa el mapa de estadísticas para el jugador.
 
-        /**
-         * Inicializa las estadísticas del jugador con valores predeterminados
-         */
-        this.stats.put(Stats.MAX_HP, 100);  // Asigna el valor predeterminado para la vida máxima del jugador.
-        this.stats.put(Stats.HP, 100);  // Inicializa los puntos de vida actuales igual a la vida máxima.
-        this.stats.put(Stats.ATTACK, 10);  // Asigna los puntos de ataque predeterminados del jugador.
-        this.stats.put(Stats.DEFENSE, 5);  // Asigna los puntos de defensa predeterminados del jugador.
+        super(name);
+        inventory = new Inventory();
     }
 
     /**
-     * Método para obtener el nombre del jugador
-     * @return El nombre del jugador
+     * Guarda el estado actual del jugador en un archivo de guardado.
+     *
+     * @param slot la ranura de guardado (número de archivo)
      */
-    public String getName() {
-        return name;  // Devuelve el nombre del jugador.
-    }
+    public void save(int slot) {
 
-    /**
-     * Método para obtener las estadísticas del jugador
-     * @return Mapa de estadísticas del jugador
-     */
-    public Map<Stats, Integer> getStats() {
-        return stats;  // Devuelve el mapa de estadísticas del jugador.
-    }
-
-    /**
-     * Método que verifica si el jugador está vivo
-     * @return Verdadero si el jugador tiene más de 0 puntos de vida, falso en caso contrario
-     */
-    public boolean isAlive() {
-        return this.stats.get(Stats.HP) > 0;  // Verifica si los puntos de vida del jugador son mayores que 0.
-    }
-
-    /**
-     * Método para atacar a un enemigo
-     */
-    public void attack(Enemy enemy) {
-        /**
-         * Calcula el daño como el ataque del jugador menos la defensa del enemigo
-         */
-        int damage = this.stats.get(Stats.ATTACK) - enemy.getStats().get(Stats.DEFENSE);
-
-        /**
-         * Si el daño es mayor que 0, aplica el daño al enemigo
-         */
-        if (damage > 0) {
-            /**
-             * Reduce los puntos de vida del enemigo en función del daño infligido
-             */
-            enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("files/save" + slot + ".dat"));
+            out.writeObject(this);
+            out.close();
+            System.out.println("Game saved");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error saving the game");
         }
+    }
+
+    /**
+     * Carga el estado del jugador desde un archivo de guardado.
+     *
+     * @param slot la ranura de guardado (número de archivo)
+     * @return el objeto Player cargado o null si ocurre un error
+     */
+    public static Player load(int slot) {
+
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream
+                    ("files/save" + slot + ".dat"));
+            Player player = (Player) in.readObject();
+            in.close();
+            return player;
+        } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error loading the game");
+        }
+        return null;
+    }
+
+    /**
+     * Intenta escapar de una batalla.
+     *
+     * @return true si logra escapar, false en caso contrario
+     */
+    public boolean tryToFlee() {
+
+        return Randomized.getRandomBoolean();
+    }
+    /**
+     * Aumenta el nivel del jugador y mejora sus estadísticas.
+     */
+    public void levelUp() {
+
+        stats.put(Stats.LEVEL, stats.get(Stats.LEVEL) + 1);
+        stats.put(Stats.MAX_HP, stats.get(Stats.MAX_HP) + Randomized.getRandomInt(5, 10));
+        stats.put(Stats.HP, stats.get(Stats.MAX_HP));
+        stats.put(Stats.MAX_MP, stats.get(Stats.MAX_MP) + Randomized.getRandomInt(2, 5));
+        stats.put(Stats.MP, stats.get(Stats.MAX_MP));
+        stats.put(Stats.ATTACK, stats.get(Stats.ATTACK) + Randomized.getRandomInt(1, 3));
+        stats.put(Stats.DEFENSE, stats.get(Stats.DEFENSE) + Randomized.getRandomInt(1, 3));
+        stats.put(Stats.NEEDED_EXPERIENCE, stats.get(Stats.NEEDED_EXPERIENCE) + 50);
+        stats.put(Stats.EXPERIENCE, 0);
+    }
+
+    /**
+     * Función sobrescrita que inicializa las características
+     * del personaje.
+     */
+    @Override
+    protected void initCharacter() {
+
+        stats.put(Stats.LEVEL, 1);
+        stats.put(Stats.MAX_HP, 100);
+        stats.put(Stats.HP, 100);
+        stats.put(Stats.MAX_MP, 50);
+        stats.put(Stats.MP, 50);
+        stats.put(Stats.ATTACK, 10);
+        stats.put(Stats.DEFENSE, 5);
+        stats.put(Stats.EXPERIENCE, 0);
+        stats.put(Stats.NEEDED_EXPERIENCE, 100);
+        stats.put(Stats.GOLD, 0);
+        equipment= new HashMap<>();
+        equipment.put(WearType.HEAD, null);
+        equipment.put(WearType.CHEST, null);
+        equipment.put(WearType.LEGS, null);
+        equipment.put(WearType.FEET, null);
+        equipment.put(WearType.HANDS, null);
+        equipment.put(WearType.WEAPON, null);
+    }
+
+    /**
+     * Añade un objeto al inventario del jugador.
+     *
+     * @param item el objeto a añadir
+     */
+    public void addItemToInventory(Item item) {
+
+        if (item instanceof Misc misc) {
+            if (misc.isStackable()) {
+                boolean found = false;
+                for (Item i : inventory.getMiscs()) {
+                    if (i.getName().equals(misc.getName())) {
+                        misc.increaseQuantity(1);
+                        inventory.removeItem(i);
+                        inventory.addItem(misc);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    inventory.addItem(item);
+                }
+            } else {
+                inventory.addItem(item);
+            }
+        } else {
+            inventory.addItem(item);
+        }
+    }
+
+    /**
+     * Elimina un objeto del inventario del jugador.
+     *
+     * @param item el objeto a eliminar
+     */
+    public void removeItemFromInventory(Item item) {
+
+        if (item instanceof Misc misc) {
+            if (misc.isStackable()) {
+                for (Item i : inventory.getMiscs()) {
+                    if (i.getName().equals(item.getName())) {
+                        misc.decreaseQuantity(1);
+                        if (misc.getQuantity() == 0) {
+                            inventory.removeItem(i);
+                        }
+                        break;
+                    }
+                }
+            } else {
+                inventory.removeItem(item);
+            }
+        } else {
+            inventory.removeItem(item);
+        }
+    }
+
+    /**
+     * Vende un objeto del inventario del jugador.
+     *
+     * @param item el objeto a vender
+     */
+    public void sellItem(Item item) {
+
+        try {
+            Item getItem = inventory.getItem(item);
+            if (getItem instanceof Misc misc) {
+                if (misc.isStackable()) {
+                    if (misc.getQuantity() > 1) {
+                        misc.decreaseQuantity(1);
+                    } else {
+                        inventory.removeItem(item);
+                    }
+                }
+            } else {
+                inventory.removeItem(getItem);
+            }
+        } catch (ItemNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    /**
+     * Muestra el contenido del inventario en un cuadro de diálogo.
+     */
+    public void showInventory() {
+
+        StringBuilder content = new StringBuilder("Inventory: \n");
+        String format = """
+                Name: %s, Price: %d
+                Description: %s
+                """;
+        String formatQuantity = """
+                Name: %s, Price: %d, Quantity: %d
+                Description: %s
+                """;
+        // Itera sobre todos los objetos del inventario
+        for (Item item : inventory.getItems()) {
+            if (item instanceof Misc misc) {  // Si es un objeto misceláneo
+                if (misc.isStackable()) {  // Si es apilable
+                    content.append(String.format(formatQuantity, item.getName(),
+                            item.getPrice(), misc.getQuantity(), item.getDescription()));  // Añade el objeto con su cantidad
+                } else {
+                    content.append(String.format(format, item.getName(), item.getPrice(),
+                            item.getDescription()));  // Añade el objeto sin cantidad
+                }
+            } else {
+                content.append(String.format(format, item.getName(), item.getPrice(),
+                        item.getDescription()));  // Añade otros tipos de objetos
+            }
+        }
+        JOptionPane.showMessageDialog(null, content.toString());  // Muestra el contenido del inventario en un cuadro de diálogo
+    }
+
+    /**
+     * Obtiene el inventario del jugador.
+     *
+     * @return el inventario del jugador
+     */
+    public Inventory getInventory() {
+        return inventory;  // Retorna el objeto Inventory del jugador
     }
 }

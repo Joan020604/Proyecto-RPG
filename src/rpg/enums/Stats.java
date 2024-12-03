@@ -1,78 +1,61 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa las diferentes estadísticas (stats) de un personaje
- * en el juego (RPG).
+ * Características de los personajes.
+ *
+ * @author Fulanito
  */
 public enum Stats {
     /**
-     * Salud actual del personaje.
-     */
-    HP,
-
-    /**
-     * Salud máxima del personaje.
+     * Vida máxima.
      */
     MAX_HP,
-
     /**
-     * Maná actual del personaje.
+     * Vida actual.
      */
-    MP,
-
+    HP,
     /**
-     * Maná máximo del personaje.
+     * Puntos de magia máximos.
      */
     MAX_MP,
-
     /**
-     * Poder de ataque del personaje.
+     * Puntos de magia actuales.
+     */
+    MP,
+    /**
+     * Ataque.
      */
     ATTACK,
-
     /**
-     * Defensa del personaje contra ataques.
+     * Defensa.
      */
     DEFENSE,
-
     /**
-     * Velocidad del personaje, afecta el orden de los turnos.
+     * Velocidad.
      */
     SPEED,
-
     /**
-     * Destreza, que puede influir en acciones precisas.
-     */
-    DEXTERITY,
-
-    /**
-     * Suerte, afecta eventos aleatorios como hallazgos y críticos.
+     * Suerte.
      */
     LUCK,
-
     /**
-     * Precisión del personaje, afecta la probabilidad de acertar ataques.
+     * Precisión.
      */
     ACCURACY,
-
     /**
-     * Evasión, probabilidad de esquivar ataques enemigos.
+     * Evasión.
      */
     EVASION,
-
     /**
-     * Probabilidad de realizar un golpe crítico.
+     * Destreza
      */
-    CRITICAL_HIT_CHANCE,
-
+    DEXTERITY,
     /**
-     * Daño adicional que se realiza en un golpe crítico.
+     * Inteligencia.
      */
-    CRITICAL_HIT_DAMAGE;
-
-    /**
-     * Constructor privado de la enumeración.
-     */
-    private Stats() {
-    }
+    INTELLIGENCE,
+    EXPERIENCE,
+    NEEDED_EXPERIENCE,
+    LEVEL,
+    GOLD
 }

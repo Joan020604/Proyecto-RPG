@@ -1,20 +1,24 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa los diferentes tipos de enemigos en el juego RPG.
- * Cada tipo de enemigo indica su nivel de dificultad o rareza.
+ * The enum Enemy type.
  */
 public enum EnemyType {
 
-    /** Enemigo básico: nivel inicial, comúnmente más débil y fácil de derrotar */
+    /**
+     * Tipo de enemigo básico.
+     */
     BASIC,
-
-    /** Enemigo medio: nivel intermedio, presenta mayor desafío que un enemigo básico */
+    /**
+     * Tipo de enemigo medio.
+     */
     MEDIUM,
-
-    /** Jefe: enemigo poderoso con estadísticas superiores y habilidades especiales */
+    /**
+     * Tipo de enemigo jefe.
+     */
     BOSS,
-
-    /** Enemigo secreto: rara vez encontrado, puede tener habilidades únicas o recompensas especiales */
-    SECRET;
+    /**
+     * Tipo de enemigo secreto.
+     */
+    SECRET
 }

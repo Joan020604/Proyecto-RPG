@@ -1,29 +1,12 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa los diferentes niveles de rareza de un ítem en el juego RPG.
- * La rareza indica cuán difícil es encontrar un ítem y, generalmente, su valor o poder relativo.
+ * Enumerado que representa los diferentes niveles de rareza de los ítems en el juego
  */
 public enum Rarity {
-
-    /** Común: ítems más frecuentes y fáciles de encontrar */
-    COMMON,
-
-    /** Poco común: ítems ligeramente más difíciles de obtener que los comunes */
-    UNCOMMON,
-
-    /** Raro: ítems valiosos y menos frecuentes */
-    RARE,
-
-    /** Épico: ítems muy raros y significativamente poderosos */
-    EPIC,
-
-    /** Legendario: ítems excepcionales, extremadamente raros y únicos */
-    LEGENDARY;
-
-    /**
-     * Constructor privado del enumerado.
-     */
-    private Rarity() {
-    }
+    COMMON,      // Representa un ítem común, fácil de encontrar y con estadísticas básicas.
+    UNCOMMON,    // Representa un ítem poco común, ligeramente mejor que uno común.
+    RARE,        // Representa un ítem raro, más difícil de encontrar y con mejores estadísticas.
+    EPIC,        // Representa un ítem épico, muy raro y con estadísticas significativamente superiores.
+    LEGENDARY;   // Representa un ítem legendario, extremadamente raro y con las mejores estadísticas del juego.
 }

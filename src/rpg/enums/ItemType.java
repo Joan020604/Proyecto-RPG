@@ -1,23 +1,10 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa los diferentes tipos de ítems en el juego RPG.
- * Cada tipo define una categoría específica de objetos que los jugadores pueden usar o equipar.
+ * Enumerado que representa los diferentes tipos de ítems (objetos) en el juego
  */
 public enum ItemType {
-
-    /** Arma: ítems diseñados para aumentar el poder de ataque del jugador */
-    WEAPON,
-
-    /** Armadura: ítems que ofrecen protección y aumentan las estadísticas defensivas del jugador */
-    ARMOR,
-
-    /** Misceláneo: ítems variados que no encajan en las categorías anteriores, como pociones o herramientas */
-    MISC;
-
-    /**
-     * Constructor privado del enumerado.
-     */
-    private ItemType() {
-    }
+    WEAPON,  // Representa un arma que el jugador o enemigo puede usar para atacar.
+    ARMOR,   // Representa una armadura que proporciona protección al jugador o enemigo.
+    MISC     // Representa ítems varios (miscellaneous), que no son ni armas ni armaduras, como pociones u otros objetos.
 }

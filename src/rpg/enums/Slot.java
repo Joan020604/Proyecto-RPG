@@ -1,43 +1,13 @@
 package rpg.enums;
 
 /**
- * Enumeración que representa los diferentes tipos de (slots) 
- * disponibles para equipamiento en el juego (RPG).
+ * Enumerado que representa las diferentes ranuras (slots) para equipar ítems en el juego
  */
 public enum Slot {
-    /**
-     * Slot para equipamiento en la cabeza.
-     */
-    HEAD,
-
-    /**
-     * Slot para equipamiento en el torso.
-     */
-    BODY,
-
-    /**
-     * Slot para equipamiento en las piernas.
-     */
-    LEGS,
-
-    /**
-     * Slot para equipamiento en los pies.
-     */
-    FEET,
-
-    /**
-     * Slot para equipamiento en las manos.
-     */
-    HANDS,
-
-    /**
-     * Slot principal para equipamiento de armas.
-     */
-    MAIN_HAND;
-
-    /**
-     * Constructor privado de la enumeración.
-     */
-    private Slot() {
-    }
+    HEAD,        // Ranura para equipar ítems en la cabeza, como cascos o diademas.
+    BODY,        // Ranura para equipar ítems en el torso, como pecheras o capas.
+    LEGS,        // Ranura para equipar ítems en las piernas, como pantalones o faldas.
+    FEET,        // Ranura para equipar ítems en los pies, como botas o zapatos.
+    HANDS,       // Ranura para equipar ítems en las manos, como guantes o brazaletes.
+    MAIN_HAND;   // Ranura para equipar ítems en la mano principal, como espadas o varitas.
 }

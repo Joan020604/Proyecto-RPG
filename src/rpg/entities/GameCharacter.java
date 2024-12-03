@@ -1,101 +1,124 @@
 package rpg.entities;
 
 import rpg.enums.Stats;
+import rpg.exceptions.EnemyDeathException;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * Representa un personaje abstracto en el juego RPG. 
- * Define las propiedades y comportamientos básicos de un personaje, como su nombre, estadísticas
- * y la capacidad de realizar ataques a otros personajes.
- * 
- * Esta clase debe ser extendida por clases concretas que implementen el método `initCharacter`.
+ * Clase que representa a un personaje del juego.
  */
-public abstract class GameCharacter {
-    
-   /** Nombre del personaje 
-    */
+public abstract class GameCharacter implements Serializable {
+    /**
+     * Nombre del personaje.
+     */
     protected String name;
-    
-   /** Estadísticas del personaje representadas como un mapa de Stats a enteros 
-    */
+    /**
+     * Características del personaje.
+     */
     protected HashMap<Stats, Integer> stats;
 
-   /**
-    * Constructor de GameCharacter.
-    * Inicializa el nombre del personaje y crea un mapa vacío para las estadísticas.
-    * 
-    * @param name el nombre del personaje
-    */
+    /**
+     * Instantiates a new Game character.
+     *
+     * @param name the name
+     */
     public GameCharacter(String name) {
 
         this.name = name;
         this.stats = new HashMap<>();
+        initCharacter();
     }
 
-   /**
-    * Método abstracto para inicializar las características del personaje.
-    * Debe ser implementado por las subclases para configurar las estadísticas iniciales.
-    */
+    /**
+     * Función que inicializa las características del personaje.
+     * Implementada por las clases hijas.
+     * Deberá de incluir el nombre del personaje y las características mínimas para su funcionamiento.
+     */
     protected abstract void initCharacter();
 
-   /**
-    * Verifica si el personaje está vivo.
-    * Un personaje se considera vivo si sus puntos de vida (HP) son mayores a 0.
-    * 
-    * @return true si el personaje tiene HP mayor a 0, de lo contrario false.
-    */
+    /**
+     * Is alive boolean.
+     *
+     * @return the boolean
+     */
     public boolean isAlive() {
         return stats.get(Stats.HP) > 0;
     }
 
-   /**
-    * Realiza un ataque a otro personaje.
-    * Calcula el daño infligido basándose en las estadísticas de ataque y defensa, 
-    * actualiza los puntos de vida (HP) del enemigo y muestra un mensaje con los resultados del ataque.
-    * 
-    * @param enemy el personaje enemigo que recibe el ataque
-    */
-    public void attack(GameCharacter enemy) {
+    /**
+     * Función que simula un ataque del personaje al enemigo e imprime un mensaje
+     * en consola con el resultado del ataque. Si el daño es mayor a 0, se resta
+     * la cantidad de daño a la vida del enemigo. Si el daño es menor o igual a 0,
+     * se imprime un mensaje indicando que no se hizo daño.
+     *
+     * @param enemy el enemigo a atacar.
+     */
+    public String attack(GameCharacter enemy) {
 
         String message = "";
         String enemyName = enemy.getName();
-        int damage = this.stats.get(Stats.ATTACK)
-                - enemy.getStats().get(Stats.DEFENSE);
+        int damage = this.stats.get(Stats.ATTACK) - enemy.getStats().get(Stats.DEFENSE);
         int newHP = enemy.getStats().get(Stats.HP);
         if (damage > 0) {
 
-            newHP = enemy.getStats().get(Stats.HP) - damage;
-            enemy.getStats().put(Stats.HP, newHP);
-            message += String.format("""
-                    %s attacks %s for %d damage!
-                    %s has %d HP left.
-                    """, this.name, enemyName, damage,
-                    enemyName, newHP);
+            try {
+                newHP = reduceHP(enemy, damage);
+                message += String.format("""
+                        ¡%s ataca a %s por %d de daño!
+                        %s tiene %d HP restantes.
+                        """, this.name, enemyName, damage, enemyName, newHP);
+            } catch (EnemyDeathException e) {
+                enemy.getStats().put(Stats.HP, 0);
+                message += String.format("""
+                        %s attacks %s for %d damage!
+                        %s has 0 HP left.
+                        %s has died.
+                        """, this.name, enemyName, damage, enemyName, enemyName);
+            }
         } else {
             message += String.format("""
-                    %s attacks %s but does no damage!
-                    %s has %d HP left.
+                    ¡%s ataca a %s pero no hace daño!
+                    %s tiene %d HP restantes.
                     """, this.name, enemyName, enemyName, newHP);
         }
-        System.out.println(message);
-    }
-
-   /**
-    * Obtiene el nombre del personaje con un título decorativo.
-    * 
-    * @return el nombre del personaje en formato "Nombre el Intrépido".
-    */
-    public String getName() {
-        return String.format("%s el Intrépido", name);
+        return message;
     }
 
     /**
-    * Obtiene las estadísticas del personaje.
-    * 
-    * @return un mapa que representa las estadísticas del personaje.
-    */
-    public HashMap<Stats, Integer> getStats() {
+     * Función que reduce la vida del enemigo y actualiza sus características.
+     *
+     * @param enemy  el enemigo a atacar.
+     * @param damage el daño a realizar.
+     * @return la nueva vida del enemigo.
+     */
+    protected final int reduceHP(GameCharacter enemy, int damage) throws EnemyDeathException {
+
+        int newHP = enemy.getStats().get(Stats.HP) - damage;
+        enemy.getStats().put(Stats.HP, newHP);
+        if (!enemy.isAlive())
+            throw new EnemyDeathException();
+        return newHP;
+    }
+
+    /**
+     * Devuelve el nombre del personaje con un epíteto.
+     *
+     * @return el nombre del personaje con el epíteto.
+     */
+    public final String getName() {
+
+        return String.format("%s", name);
+    }
+
+    /**
+     * Gets stats.
+     *
+     * @return the stats
+     */
+    public final HashMap<Stats, Integer> getStats() {
+
         return stats;
     }
 }
