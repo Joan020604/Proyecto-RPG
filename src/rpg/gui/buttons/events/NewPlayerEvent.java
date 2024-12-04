@@ -1,7 +1,6 @@
 package rpg.gui.buttons.events;
 
 import rpg.NewFileWindow;
-import rpg.gui.StartWindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,14 +14,14 @@ public class NewPlayerEvent implements ActionListener {
     // Número de la ranura de guardado donde se almacenará la nueva partida
     int slot;
     // Referencia a la ventana de inicio del juego
-    StartWindow startWindow;
+    rpg.gui.StartWindow startWindow;
 
     /**
      * Constructor de la clase NewPlayerEvent.
      * @param slot número de la ranura de guardado donde se almacenará la nueva partida.
      * @param startWindow ventana de inicio del juego que será cerrada al crear un nuevo jugador.
      */
-    public NewPlayerEvent(int slot, StartWindow startWindow) {
+    public NewPlayerEvent(int slot, rpg.gui.StartWindow startWindow) {
         this.slot = slot;
         this.startWindow = startWindow;
     }

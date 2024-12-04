@@ -2,7 +2,6 @@ package rpg.gui.buttons.events;
 
 import rpg.entities.Player;
 import rpg.gui.MainWindow;
-import rpg.gui.StartWindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +15,14 @@ public class LoadFileEvent implements ActionListener {
     // Número de la ranura de guardado que se va a cargar
     private int slot;
     // Referencia a la ventana de inicio desde la que se carga el archivo
-    private StartWindow startWindow;
+    private rpg.gui.StartWindow startWindow;
 
     /**
      * Constructor de la clase LoadFileEvent.
      * @param slot número de la ranura de guardado a cargar.
      * @param startWindow instancia de la ventana de inicio desde donde se carga la partida.
      */
-    public LoadFileEvent(int slot, StartWindow startWindow) {
+    public LoadFileEvent(int slot, rpg.gui.StartWindow startWindow) {
         this.slot = slot;
         this.startWindow = startWindow;
     }

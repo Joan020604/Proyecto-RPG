@@ -86,7 +86,6 @@ public class HoverButtonUI extends BasicButtonUI {
      * En este caso, se cargan imágenes desde la caché.
      */
     private void initParts() {
-        // Inicializa los arreglos de imágenes para los estados normal y hover
         parts = new ImageIcon[3];
         partsHover = new ImageIcon[3];
 

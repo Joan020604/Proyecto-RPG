@@ -10,7 +10,7 @@ import rpg.gui.buttons.events.NewPlayerEvent;
 public class NewFileButton extends BaseButton {
 
     private int slot;  // El slot donde se guardará la nueva partida.
-    private StartWindow startWindow;  // La ventana de inicio donde se muestra el botón.
+    private rpg.gui.StartWindow startWindow;  // La ventana de inicio donde se muestra el botón.
 
     /**
      * Constructor que inicializa el botón para crear una nueva partida.

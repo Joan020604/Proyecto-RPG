@@ -54,7 +54,9 @@ public class StartWindow extends JFrame {
         update(); // Actualiza la información de los slots de guardado.
     }
 
-    // Método que actualiza el contenido de los slots de guardado.
+    /**
+     *Método que actualiza el contenido de los slots de guardado.
+     */
     public void update() {
 
         // Recorre los cinco slots de guardado (1 a 5).
@@ -111,7 +113,9 @@ public class StartWindow extends JFrame {
         }
     }
 
-    // Método que inicializa los componentes de la interfaz gráfica.
+    /**
+    *Método que inicializa los componentes de la interfaz gráfica.
+     */
     private void createUIComponents() {
         // Creación de los componentes gráficos para la interfaz.
         mainPanel = new FilesPanel(); // Panel que contiene los slots de guardado.
@@ -135,7 +139,9 @@ public class StartWindow extends JFrame {
         loadFile5 = new LoadFileButton(5, this); // Botón para cargar en el quinto slot.
     }
 
-    // Método que verifica si el archivo de un slot está vacío.
+    /**
+     *Método que verifica si el archivo de un slot está vacío.
+     */
     private boolean isFileEmpty(int slot) {
         // Comprueba si el archivo de guardado existe en el directorio "files".
         return !new File("files/save" + slot + ".dat").exists();
