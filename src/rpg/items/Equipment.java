@@ -17,23 +17,26 @@ import rpg.interfaces.Equipable;
 // Importa la interfaz Equipable, que define los métodos que debe implementar cualquier objeto que pueda ser equipado.
 
 import java.util.HashMap;
-// Importa la clase HashMap, utilizada para almacenar las estadísticas del equipo junto con sus valores.
-
+/** Importa la clase HashMap, utilizada para almacenar las estadísticas del equipo junto con sus valores.
+ */
 /**
  * Clase abstracta que representa un objeto de equipo en el juego.
- * Hereda de la clase Item y implementa la interfaz Equipable.
+ * Hereda de la clase Item e implementa la interfaz Equipable.
  */
 public abstract class Equipment extends Item implements Equipable {
-    // La clase Equipment extiende Item y debe implementar los métodos definidos en la interfaz Equipable.
+    /** La clase Equipment extiende Item y debe implementar los métodos definidos en la interfaz Equipable.
+     */
 
     protected Slot slot;
-    // Variable de instancia que indica en qué ranura del personaje se equipa este objeto.
-
+    /** Variable de instancia que indica en qué ranura del personaje se equipa este objeto.
+     */
     protected Rarity rarity;
-    // Variable de instancia que indica la rareza del equipo.
+    /** Variable de instancia que indica la rareza del equipo.
+     */
 
     protected HashMap<Stats, Integer> stats;
-    // Estructura de datos que almacena las estadísticas del equipo y sus valores correspondientes.
+    /** Estructura de datos que almacena las estadísticas del equipo y sus valores correspondientes.
+     */
 
     /**
      * Método que define la lógica para equipar el objeto.
@@ -41,8 +44,9 @@ public abstract class Equipment extends Item implements Equipable {
      */
     @Override
     public void equip() {
-        // Implementar lógica de equipamiento.
-        // Por ejemplo, aumentar las estadísticas del personaje o actualizar el estado visual.
+        /** Implementar lógica de equipamiento.
+        * Por ejemplo, aumentar las estadísticas del personaje o actualizar el estado visual.
+         */
     }
 
     /**
@@ -51,8 +55,9 @@ public abstract class Equipment extends Item implements Equipable {
      */
     @Override
     public void unequip() {
-        // Implementar lógica de desequipamiento.
-        // Por ejemplo, revertir los efectos del equipo en las estadísticas del personaje.
+        /** Implementar lógica de desequipamiento.
+        * Por ejemplo, revertir los efectos del equipo en las estadísticas del personaje.
+         */
     }
 
     /**

@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class HoverButtonUI extends BasicButtonUI {
 
-    // Variables para almacenar las dimensiones y las imágenes del botón
+    /** Variables para almacenar las dimensiones y las imágenes del botón*/
     protected int width;
     protected int dwidth;
     protected int height;
@@ -29,19 +29,19 @@ public class HoverButtonUI extends BasicButtonUI {
     @Override
     protected void installDefaults(AbstractButton b) {
 
-        // Inicializa las imágenes para los diferentes estados del botón
+        /** Inicializa las imágenes para los diferentes estados del botón*/
         initParts();
 
-        // Configura las propiedades visuales y de comportamiento del botón
-        b.setForeground(Color.WHITE);  // Establece el color del texto
-        b.setDoubleBuffered(true);     // Habilita el doble buffer para una mejor visualización
-        b.setOpaque(false);            // El botón no es opaco, dejando ver el fondo
-        b.setFocusPainted(false);      // No se pinta el borde cuando se enfoca
-        b.setContentAreaFilled(false); // No se llena el área de contenido con un color
-        b.setIconTextGap(5);           // Establece el espacio entre el texto y el ícono
-        b.setCursor(new Cursor(Cursor.HAND_CURSOR));  // Cambia el cursor a una mano cuando pasa sobre el botón
+        /** Configura las propiedades visuales y de comportamiento del botón*/
+        b.setForeground(Color.WHITE);  /** Establece el color del texto*/
+        b.setDoubleBuffered(true);     /** Habilita el doble buffer para una mejor visualización*/
+        b.setOpaque(false);            /** El botón no es opaco, dejando ver el fondo*/
+        b.setFocusPainted(false);      /** No se pinta el borde cuando se enfoca*/
+        b.setContentAreaFilled(false); /** No se llena el área de contenido con un color*/
+        b.setIconTextGap(5);           /** Establece el espacio entre el texto y el ícono*/
+        b.setCursor(new Cursor(Cursor.HAND_CURSOR));  /** Cambia el cursor a una mano cuando pasa sobre el botón*/
 
-        // Calcula el ancho y la altura del botón en función del texto
+        /** Calcula el ancho y la altura del botón en función del texto*/
         String text = b.getText();
         this.width = b.getFontMetrics(b.getFont()).stringWidth(text) + (5);
         this.height = 48;  // Establece una altura fija para el botón
@@ -55,8 +55,8 @@ public class HoverButtonUI extends BasicButtonUI {
      */
     @Override
     public Dimension getPreferredSize(JComponent c) {
-        dwidth = Math.max(width + 45, 84);  // Asegura que el ancho sea al menos 84 píxeles
-        return new Dimension(Math.max(width, 84), 48);  // Establece el tamaño preferido del botón
+        dwidth = Math.max(width, 115);  // Asegura que el ancho sea al menos 84 píxeles
+        return new Dimension(Math.max(width,115), 48);  // Establece el tamaño preferido del botón
     }
 
     /**

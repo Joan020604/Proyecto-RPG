@@ -47,7 +47,7 @@ public class NameLabelUI extends GameLabelUI {
         c.setHorizontalTextPosition(JLabel.CENTER); // Posición horizontal del texto centrado
         FontMetrics metrics = c.getFontMetrics(c.getFont()); // Medimos las métricas de la fuente
         int textWidth = metrics.stringWidth(c.getText()); // Calculamos el ancho del texto
-        c.setPreferredSize(new Dimension(textWidth + 44, 51)); // Establecemos el tamaño preferido
+        c.setPreferredSize(new Dimension(textWidth + 65, 51)); // Establecemos el tamaño preferido
     }
 
     /**

@@ -127,7 +127,7 @@ public class MainWindow extends JFrame {
         ExpLabel = new BarLabel(100, 100, BarType.EXPERIENCE);
 
         goldLabel = new GoldLabel();
-        nameLabel = new NameLabel("Andrew LVL. 1");
+        nameLabel = new NameLabel("Rocket");
 
         playerSprite = new PlayerSpriteLabel();
         enemyNameLabel = new NameLabel(enemy.getName());
@@ -224,10 +224,10 @@ public class MainWindow extends JFrame {
      */
     public void tryToFlee() {
         if (player.tryToFlee()) {
-            appendText("Has huido con éxito, tío.\n");
+            appendText("Has huido con éxito. \n");
             createEnemy();
         } else {
-            appendText("No has podido huir.\n");
+            appendText("No has logrado huir.\n");
             appendText(enemy.attack(player));
         }
         updateBars();

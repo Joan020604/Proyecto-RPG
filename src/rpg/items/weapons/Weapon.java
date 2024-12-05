@@ -8,23 +8,27 @@ import rpg.enums.ItemType;
 // Importa la enumeración ItemType, que clasifica los tipos de objetos (por ejemplo, equipo, misceláneo, consumible).
 
 import rpg.items.Equipment;
-// Importa la clase base Equipment, de la que hereda la clase Weapon.
+/** Importa la clase base Equipment, de la que hereda la clase Weapon.
+ */
 
 /**
  * Clase abstracta que representa un arma en el juego.
  */
 public abstract class Weapon extends Equipment {
-    // La clase Weapon extiende la clase Equipment y define características específicas de las armas.
+    /** La clase Weapon extiende la clase Equipment y define características específicas de las armas.
+      */
+
 
     protected WeaponType weaponType;
-    // Variable de instancia que almacena el tipo específico de arma (por ejemplo, espada, lanza, arco).
-
+    /** Variable de instancia que almacena el tipo específico de arma (por ejemplo, espada, lanza, arco).
+ */
     /**
      * Método que devuelve el tipo de arma.
      * @return weaponType
      */
     public WeaponType getWeaponType() {
-        // Método público que devuelve el tipo de arma.
+        /** Método público que devuelve el tipo de arma.
+         */
         return weaponType;
     }
 
@@ -32,9 +36,12 @@ public abstract class Weapon extends Equipment {
      * Método para realizar un ataque de corte con el arma.
      */
     public void slash() {
-        // Método público que define la lógica para un ataque de corte.
-        // Actualmente, no está implementado.
-        // Se puede sobrescribir en clases derivadas para definir un comportamiento específico.
+        /** Método público que define la lógica para un ataque de corte.
+         */
+        /** Actualmente, no está implementado.
+         */
+        /** Se puede sobrescribir en clases derivadas para definir un comportamiento específico.
+         */
     }
 }
 

@@ -18,13 +18,13 @@ public class BottomPanel extends BackgroundPanel {
      */
     @Override
     protected void init() {
-        // Carga la imagen de fondo del panel desde la caché de imágenes usando su ruta específica
+        /** Carga la imagen de fondo del panel desde la caché de imágenes usando su ruta específica*/
         backgroundImage = new ImageIcon(ImageCache.addImage("bottomPanel", "Paneles/ButtonPanel.png"));
 
-        // Establece las dimensiones del panel según las constantes definidas en `WindowConstants`
+        /** Establece las dimensiones del panel según las constantes definidas en `WindowConstants`*/
         setDimension(WindowConstants.MIDDLE_DIMENSION);
 
-        // Establece un borde vacío para el panel, según la configuración de `WindowConstants`
+        /** Establece un borde vacío para el panel, según la configuración de `WindowConstants`*/
         setBorder(WindowConstants.EMPTY_BORDER);
     }
 }

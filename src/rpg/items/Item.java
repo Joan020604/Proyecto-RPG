@@ -1,30 +1,40 @@
 package rpg.items;
-// Paquete donde se encuentra la clase Item, en el subpaquete "items" dentro del proyecto RPG.
+/** Paquete donde se encuentra la clase Item, en el subpaquete "items" dentro del proyecto RPG.
+*/
 
 import rpg.enums.ItemType;
-// Importa la enumeración ItemType, que clasifica los tipos de objetos en el juego (por ejemplo, equipo, consumible, misceláneo).
+/** Importa la enumeración ItemType, que clasifica los tipos de objetos en el juego
+ *  (por ejemplo, equipo, consumible, misceláneo).
+ */
 
 import java.io.Serializable;
-// Importa la interfaz Serializable, lo que permite que los objetos de esta clase puedan ser serializados.
+/** Importa la interfaz Serializable, lo que permite que los objetos de esta clase puedan ser serializados.
+ */
 
 /**
  * Clase abstracta que representa un objeto genérico en el juego.
  * Todos los objetos del juego heredarán de esta clase.
  */
 public abstract class Item implements Serializable {
-    // La clase Item es abstracta y define las propiedades y comportamientos básicos de cualquier objeto en el juego.
+    /** La clase Item es abstracta y define las propiedades y comportamientos
+     * básicos de cualquier objeto en el juego.
+     */
 
     protected String name;
-    // Variable protegida que almacena el nombre del objeto.
+    /** Variable protegida que almacena el nombre del objeto.
+     */
 
     protected String description;
-    // Variable protegida que almacena la descripción del objeto.
+    /** Variable protegida que almacena la descripción del objeto.
+     */
 
     protected int price;
-    // Variable protegida que almacena el precio del objeto en la moneda del juego.
+    /** Variable protegida que almacena el precio del objeto en la moneda del juego.
+     */
 
     protected ItemType itemType;
-    // Variable protegida que almacena el tipo de objeto, utilizando la enumeración ItemType.
+    /** Variable protegida que almacena el tipo de objeto, utilizando la enumeración ItemType.
+     */
 
     /**
      * Constructor de la clase Item.
